@@ -307,7 +307,7 @@ export default function CouponsPage() {
           setOpen(false)
         }
         onSave={async (
-          payload
+          payload : any
         ) => {
           if (
             selectedCoupon?.id

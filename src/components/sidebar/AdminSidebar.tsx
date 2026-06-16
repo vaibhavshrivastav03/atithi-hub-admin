@@ -8,7 +8,7 @@ import {
   Divider,
 } from "@mui/material";
 
-import AppLogo from "../common/AppLogo";
+
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import ApartmentIcon from "@mui/icons-material/Apartment";
