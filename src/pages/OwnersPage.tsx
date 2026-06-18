@@ -19,8 +19,7 @@ import { useOwners } from "../hooks/useOwners";
 import {
   useSuspendOwner,
   useActivateOwner,
-  useDeleteOwner,
-} from "../hooks/useOwnerActions";
+ } from "../hooks/useOwnerActions";
 
 export default function OwnersPage() {
   const navigate =
@@ -40,9 +39,7 @@ export default function OwnersPage() {
   const activateMutation =
     useActivateOwner();
 
-  const deleteMutation =
-    useDeleteOwner();
-
+  
   const filteredRows =
     data?.filter(
       (owner: any) =>
@@ -156,24 +153,6 @@ export default function OwnersPage() {
               Activate
             </Button>
 
-            <Button
-              size="small"
-              color="error"
-              variant="contained"
-              onClick={() => {
-                if (
-                  confirm(
-                    "Delete owner?"
-                  )
-                ) {
-                  deleteMutation.mutate(
-                    params.row.id
-                  );
-                }
-              }}
-            >
-              Delete
-            </Button>
           </Stack>
         ),
       },

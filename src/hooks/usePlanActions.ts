@@ -36,16 +36,7 @@ export const useUpdatePlan = () =>
     },
   });
 
-export const useDeletePlan = () =>
-  useMutation({
-    mutationFn: deletePlan,
 
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["plans"],
-      });
-    },
-  });
 
 export const useActivatePlan = () =>
   useMutation({

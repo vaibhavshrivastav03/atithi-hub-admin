@@ -37,13 +37,3 @@ export const activateOwner = async (
 
   return response.data;
 };
-
-export const deleteOwner = async (
-  id: number
-) => {
-  const response = await api.delete(
-    `/api/v1/admin/owners/${id}`
-  );
-
-  return response.data;
-};

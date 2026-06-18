@@ -5,8 +5,7 @@ import { queryClient } from "../api/queryClient";
 import {
   suspendOwner,
   activateOwner,
-  deleteOwner,
-} from "../services/owner.service";
+  } from "../services/owner.service";
 
 export const useSuspendOwner = () =>
   useMutation({
@@ -30,13 +29,3 @@ export const useActivateOwner = () =>
     },
   });
 
-export const useDeleteOwner = () =>
-  useMutation({
-    mutationFn: deleteOwner,
-
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["owners"],
-      });
-    },
-  });

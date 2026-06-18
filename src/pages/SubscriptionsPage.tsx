@@ -19,7 +19,6 @@ import {
   useSubscriptionAnalytics,
 } from "../hooks/useSubscriptions";
 
-import { useCancelSubscription } from "../hooks/useSubscriptionActions";
 
 export default function SubscriptionsPage() {
   const [search, setSearch] =
@@ -35,8 +34,6 @@ export default function SubscriptionsPage() {
   } =
     useSubscriptionAnalytics();
 
-  const cancelMutation =
-    useCancelSubscription();
 
   const rows =
     data?.filter(
@@ -121,35 +118,6 @@ export default function SubscriptionsPage() {
         ),
     },
 
-    {
-      field: "actions",
-      headerName:
-        "Actions",
-      width: 180,
-
-      renderCell:
-        (params: any) => (
-          <Button
-            color="error"
-            variant="contained"
-            size="small"
-            onClick={() => {
-              if (
-                window.confirm(
-                  "Cancel Subscription?"
-                )
-              ) {
-                cancelMutation.mutate(
-                  params
-                    .row.id
-                );
-              }
-            }}
-          >
-            Cancel
-          </Button>
-        ),
-    },
   ];
 
   if (isLoading)
