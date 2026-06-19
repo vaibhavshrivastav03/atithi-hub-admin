@@ -20,13 +20,12 @@ export default function PlanDialog({
   onSave,
 }: any) {
   const emptyForm = {
-    name: "",
-    description: "",
-    price: "",
-    property_limit: 1,
-    billing_cycle:
-      "monthly",
-  };
+  name: "",
+  description: "",
+  price: "",
+  property_limit: 1,
+  razorpay_plan_id: "",
+};
 
   const [form, setForm] =
     useState(emptyForm);
@@ -53,9 +52,9 @@ export default function PlanDialog({
             plan.property_limit
           ) || 1,
 
-        billing_cycle:
-          plan.billing_cycle ||
-          "monthly",
+        razorpay_plan_id:
+          plan.razorpay_plan_id ||
+          "",
       });
     } else {
       setForm(emptyForm);
@@ -141,33 +140,20 @@ export default function PlanDialog({
         />
 
         <TextField
-          select
-          fullWidth
-          margin="normal"
-          label="Billing Cycle"
-          value={
-            form.billing_cycle
-          }
-          onChange={(e) =>
-            setForm({
-              ...form,
-              billing_cycle:
-                e.target.value,
-            })
-          }
-        >
-          <MenuItem value="monthly">
-            Monthly
-          </MenuItem>
-
-          <MenuItem value="yearly">
-            Yearly
-          </MenuItem>
-
-          <MenuItem value="lifetime">
-            Lifetime
-          </MenuItem>
-        </TextField>
+            fullWidth
+            margin="normal"
+            label="Razorpay Plan ID"
+            value={
+              form.razorpay_plan_id
+            }
+            onChange={(e) =>
+              setForm({
+                ...form,
+                razorpay_plan_id:
+                  e.target.value,
+              })
+            }
+          />
       </DialogContent>
 
       <DialogActions>
@@ -181,20 +167,18 @@ export default function PlanDialog({
           variant="contained"
           onClick={() =>
             onSave({
-              name: form.name,
-              description:
-                form.description,
-              price:
-                Number(
-                  form.price
-                ),
-              property_limit:
-                Number(
-                  form.property_limit
-                ),
-              billing_cycle:
-                form.billing_cycle,
-            })
+                  name: form.name,
+                  description:
+                    form.description,
+                  price:
+                    Number(form.price),
+                  property_limit:
+                    Number(
+                      form.property_limit
+                    ),
+                  razorpay_plan_id:
+                    form.razorpay_plan_id,
+                })
           }
         >
           Save

@@ -5,7 +5,6 @@ import {
   DialogActions,
   TextField,
   Button,
-  MenuItem,
 } from "@mui/material";
 
 import {
@@ -32,9 +31,8 @@ export default function PlanDialog({
       description: "",
       price: "",
       property_limit: 1,
-      billing_cycle:
-        "monthly",
-    });
+      razorpay_plan_id: "",
+  });
 
   useEffect(() => {
     if (open) {
@@ -53,38 +51,37 @@ export default function PlanDialog({
             Number(
               plan.property_limit
             ) || 1,
-          billing_cycle:
-            plan.billing_cycle ||
-            "monthly",
+          razorpay_plan_id:
+            plan.razorpay_plan_id ||
+            "",
         });
       } else {
         setForm({
-          name: "",
-          description: "",
-          price: "",
-          property_limit: 1,
-          billing_cycle:
-            "monthly",
-        });
+              name: "",
+              description: "",
+              price: "",
+              property_limit: 1,
+              razorpay_plan_id: "",
+        });      
       }
     }
   }, [plan, open]);
 
   const handleSave = () => {
     onSave({
-      name: form.name,
-      description:
-        form.description,
-      price:
-        Number(form.price),
-      property_limit:
-        Number(
-          form.property_limit
-        ),
-      billing_cycle:
-        form.billing_cycle,
-      is_active: true,
-    });
+        name: form.name,
+        description:
+          form.description,
+        price:
+          Number(form.price),
+        property_limit:
+          Number(
+            form.property_limit
+          ),
+            razorpay_plan_id:
+              form.razorpay_plan_id,
+            is_active: true,
+          });
   };
 
   return (
@@ -166,33 +163,20 @@ export default function PlanDialog({
         />
 
         <TextField
-          select
-          fullWidth
-          margin="normal"
-          label="Billing Cycle"
-          value={
-            form.billing_cycle
-          }
-          onChange={(e) =>
-            setForm({
-              ...form,
-              billing_cycle:
-                e.target.value,
-            })
-          }
-        >
-          <MenuItem value="monthly">
-            Monthly
-          </MenuItem>
-
-          <MenuItem value="yearly">
-            Yearly
-          </MenuItem>
-
-          <MenuItem value="lifetime">
-            Lifetime
-          </MenuItem>
-        </TextField>
+            fullWidth
+            margin="normal"
+            label="Razorpay Plan ID"
+            value={
+              form.razorpay_plan_id
+            }
+            onChange={(e) =>
+              setForm({
+                ...form,
+                razorpay_plan_id:
+                  e.target.value,
+              })
+            }
+          />
       </DialogContent>
 
       <DialogActions>

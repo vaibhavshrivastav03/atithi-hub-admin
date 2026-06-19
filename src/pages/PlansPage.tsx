@@ -93,11 +93,9 @@ export default function PlansPage() {
     },
 
     {
-      field:
-        "billing_cycle",
-      headerName:
-        "Billing",
-      width: 130,
+      field: "razorpay_plan_id",
+      headerName: "Razorpay Plan ID",
+      width: 250,
     },
 
     {
